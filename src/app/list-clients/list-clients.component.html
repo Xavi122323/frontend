@@ -1,17 +1,19 @@
-><h1>Client list</h1>
+<h1>Lista de clientes</h1>
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Identification</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo electrónico</th>
+        <th scope="col">Identificación</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let client of clients">
-        <td>{{client.Name}}</td>
-        <td>{{client.Email}}</td>
-        <td>{{client.Identification}}</td>
+        <td>{{client.name}}</td>
+        <td>{{client.email}}</td>
+        <td>{{client.identification}}</td>
+        <td><button class="btn btn-success">Editar</button> | <button class="btn btn-danger" (click)="deleteClient(client.id)">Eliminar</button></td>
       </tr>
     </tbody>
 </table>

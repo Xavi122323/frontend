@@ -8,7 +8,7 @@ import { ClientService } from '../services/client.service';
 })
 export class ListClientsComponent {
 
-  clients:any;
+  clients: any;
 
   constructor(private clientService: ClientService){
 
@@ -19,10 +19,18 @@ export class ListClientsComponent {
   }
 
   ClientList(){
-    this.clients = this.clientService.listClient().subscribe(
-      client => {
-        this.clients = client
+    this.clientService.listClient().subscribe(
+      clients => {
+        this.clients = clients;
         console.log(this.clients);
+      }
+    )
+  }
+
+  deleteClient(id:any){
+    this.clientService.deleteClient(id).subscribe(
+      client => {
+        
       }
     )
   }

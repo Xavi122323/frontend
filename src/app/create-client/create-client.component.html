@@ -1,1 +1,20 @@
-<p>create-client works!</p>
+<div>
+    <h1>Agregar datos</h1>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="text" class="form-control" id="email" formControlName="email" placeholder="nombre@ejemplo.com">
+        </div>
+        <div class="mb-3">
+            <label for="identification" class="form-label">Identificación</label>
+            <input type="text" class="form-control" id="identification" formControlName="identification">
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Guardar datos</button>
+        </div>
+    </form>
+</div>
