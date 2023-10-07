@@ -22,15 +22,15 @@ export class ClientService {
     return this.http.post(this.url+'/api/v1/clientes', {client: data}, this.httpOptions)
   }
 
-  findClient(){
-
+  findClient(id: any){
+    return this.http.get(this.url+'/api/v1/clientes/'+id)
   }
 
-  editClient(){
-
+  editClient(data:any, id:any){
+    return this.http.put(this.url+'/api/v1/clientes/'+id,  data, this.httpOptions)
   }
 
   deleteClient(id: any){
-    return this.http.post(this.url+'/api/v1/clientes', {client: id})
+    return this.http.delete(this.url+'/api/v1/clientes/'+id)
   }
 }

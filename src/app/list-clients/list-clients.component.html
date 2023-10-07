@@ -13,7 +13,7 @@
         <td>{{client.name}}</td>
         <td>{{client.email}}</td>
         <td>{{client.identification}}</td>
-        <td><button class="btn btn-success">Editar</button> | <button class="btn btn-danger" (click)="deleteClient(client.id)">Eliminar</button></td>
+        <td><button class="btn btn-success" routerLink="edit/client/{{ client.id }}">Editar</button> | <button class="btn btn-danger" (click)="deleteClient(client.id)">Eliminar</button></td>
       </tr>
     </tbody>
 </table>
