@@ -33,4 +33,10 @@ export class ClientService {
   deleteClient(id: any){
     return this.http.delete(this.url+'/api/v1/clientes/'+id)
   }
+
+  login(username: string, password: string){
+    const credentials = { username, password };
+    return this.http.post(this.url+'/api/v1/users', credentials);
+  }
+
 }

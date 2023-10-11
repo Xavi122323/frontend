@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ClientService } from '../services/client.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-client',
@@ -17,7 +18,7 @@ clientForm = new FormGroup({
   identification: new FormControl('')
 })
 
-constructor(private clientService: ClientService){}
+constructor(private clientService: ClientService, private router: Router){}
 
 onSubmit(){
   this.clientService.addClient(this.clientForm.value).subscribe(
@@ -25,6 +26,7 @@ onSubmit(){
       this.cliente = cliente
     }
   )
+  this.router.navigate(['list/client']);
 }
 
 }

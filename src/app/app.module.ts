@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { ListClientsComponent } from './list-clients/list-clients.component';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListClientsComponent,
     CreateClientComponent,
-    EditClientComponent
+    EditClientComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

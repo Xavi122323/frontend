@@ -15,7 +15,7 @@ export class EditClientComponent {
   client: any;
   id: any;
 
-  constructor(private clientService: ClientService, private route: ActivatedRoute){
+  constructor(private clientService: ClientService, private route: ActivatedRoute, private router: Router){
 
   }
 
@@ -40,6 +40,7 @@ export class EditClientComponent {
         
       }
     )
+    this.router.navigate(['list/client']);
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ClientService } from '../services/client.service';
+import { Router } from '@angular/router';
   
 @Component({
   selector: 'app-list-clients',
@@ -10,7 +11,7 @@ export class ListClientsComponent {
 
   clients: any;
 
-  constructor(private clientService: ClientService){
+  constructor(private clientService: ClientService, private router: Router){
 
   }
 
@@ -33,5 +34,15 @@ export class ListClientsComponent {
         
       }
     )
+    this.ClientList();
+    this.router.navigate(['list/client']);
+  }
+
+  editClient(id:any){
+    this.router.navigate(['edit/client/'+id]);
+  }
+
+  createClient(){
+    this.router.navigate(['create/client']);
   }
 }
