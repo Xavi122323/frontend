@@ -5,22 +5,23 @@ import { CreateClientComponent } from './create-client/create-client.component';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {
     path:'', component:LoginComponent
   },
   {
-    path:'register/user', component:RegisterComponent
+    path:'register/user', component:RegisterComponent, canActivate:[AuthGuard]
   },
   {
-    path:'list/client', component:ListClientsComponent
+    path:'list/client', component:ListClientsComponent, canActivate:[AuthGuard]
   },
   {
-    path:'create/client', component:CreateClientComponent
+    path:'create/client', component:CreateClientComponent, canActivate:[AuthGuard]
   },
   {
-    path:'edit/client/:clientID', component:EditClientComponent
+    path:'edit/client/:clientID', component:EditClientComponent, canActivate:[AuthGuard]
   }
 ];
 

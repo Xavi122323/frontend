@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { ClientService } from '../services/client.service'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,27 +10,28 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private clientService: ClientService, private router: Router){}
+  constructor(private authService: AuthService, private router: Router)
+  {
+    localStorage.clear();
+  }
 
   user: any;
+  responseData: any;
 
   userForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
+    email: new FormControl("", Validators.required),
+    password: new FormControl("", Validators.required)
   })
 
   onSubmit(): void {
-    this.clientService.login(this.userForm.value)
+    this.authService.proceedLogin(this.userForm.value.email, this.userForm.value.password)
       .subscribe(
-        /*(response) => {
-          console.log('Login successful', response);
-          this.router.navigate(['list/client']);
-        },
-        (error) => {
-          console.error('Login failed', error);
-        }*/
-        user => {
-          this.user = user
+        result =>{
+          if(result != null){
+            this.responseData = result;
+            localStorage.setItem('token',this.responseData.jwtToken)
+            this.router.navigate(['list/client']);
+          }
         }
       );
   }

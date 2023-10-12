@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ClientService } from '../services/client.service';
+import { AuthService } from '../services/auth.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,24 +10,27 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  constructor(private clientService: ClientService, private router: Router){}
+  constructor(private authService: AuthService, private router: Router){}
 
   user: any;
+  responseData: any;
 
   userForm = new FormGroup({
-    username: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl('')
   })
 
   onSubmit(): void {
-    this.clientService.register(this.userForm.value)
+    this.authService.registerLogin(this.userForm.value.email, this.userForm.value.password)
       .subscribe(
-        user => {
-          this.user = user
+        result =>{
+          if(result != null){
+            this.responseData = result;
+            localStorage.setItem('token',this.responseData.jwtToken)
+            this.router.navigate(['']);
+          }
         }
-      )
-      this.router.navigate(['']);
+      );
   }
 
 }
