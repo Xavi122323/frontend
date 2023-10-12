@@ -34,9 +34,12 @@ export class ClientService {
     return this.http.delete(this.url+'/api/v1/clientes/'+id)
   }
 
-  login(username: string, password: string){
-    const credentials = { username, password };
-    return this.http.post(this.url+'/api/v1/users', credentials);
+  login(data: any){
+    return this.http.post(this.url+'/api/v1/users', {user: data}, this.httpOptions);
   }
 
+  register(data: any){
+    return this.http.post(this.url+'/api/v1/users', {user: data}, this.httpOptions)
+  }
+  
 }
